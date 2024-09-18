@@ -1,0 +1,15 @@
+{
+    "projectName": "FunQuery",
+    "languages": [{
+        "id": "fun-query",
+        "grammar": "src/language/fun-query.langium",
+        "fileExtensions": [".ntt", ".fq"],
+        "textMate": {
+            "out": "syntaxes/fun-query.tmLanguage.json"
+        },
+        "monarch": {
+            "out": "src/syntaxes/fun-query.monarch.ts"
+        }
+    }],
+    "out": "src/language/generated"
+}
