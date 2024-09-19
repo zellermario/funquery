@@ -3,7 +3,7 @@
     "languages": [{
         "id": "fun-query",
         "grammar": "src/language/fun-query.langium",
-        "fileExtensions": [".ntt", ".fq"],
+        "fileExtensions": [".fq", ".fqs"],
         "textMate": {
             "out": "syntaxes/fun-query.tmLanguage.json"
         },

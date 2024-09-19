@@ -71,7 +71,7 @@
                     "FunQuery",
                     "fun-query"
                 ],
-                "extensions": [".ntt", ".fq"],
+                "extensions": [".fq", ".fqs"],
                 "configuration": "./language-configuration.json"
             }
         ],
