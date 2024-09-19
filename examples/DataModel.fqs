@@ -1,0 +1,12 @@
+opaque type Year = Integer
+sum Season = Autumn | Spring
+
+entity Teacher {
+  name: String(100)
+}
+
+entity Course {
+  id: Integer
+  name: String(60)
+  administrator -> Teacher
+}
