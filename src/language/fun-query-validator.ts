@@ -1,30 +1,27 @@
 import type { ValidationAcceptor, ValidationChecks } from 'langium';
-import type { FunQueryAstType, Person } from './generated/ast.js';
+import type { FunQueryAstType, Entity } from './generated/ast.js';
 import type { FunQueryServices } from './fun-query-module.js';
 
-/**
- * Register custom validation checks.
- */
+
+// Register custom validation checks.
 export function registerValidationChecks(services: FunQueryServices) {
     const registry = services.validation.ValidationRegistry;
     const validator = services.validation.FunQueryValidator;
     const checks: ValidationChecks<FunQueryAstType> = {
-        Person: validator.checkPersonStartsWithCapital
+        Entity: validator.checkEntityDoesNotStartWithQ
     };
     registry.register(checks, validator);
 }
 
-/**
- * Implementation of custom validations.
- */
+// Implementation of custom validations.
 export class FunQueryValidator {
 
-    checkPersonStartsWithCapital(person: Person, accept: ValidationAcceptor): void {
-        if (person.name) {
-            const firstChar = person.name.substring(0, 1);
-            if (firstChar.toUpperCase() !== firstChar) {
-                accept('warning', 'Person name should start with a capital.', { node: person, property: 'name' });
-            }
+    checkEntityDoesNotStartWithQ(entity: Entity, accept: ValidationAcceptor): void {
+        if (!entity.name) {
+            return;
+        }
+        if (entity.name.startsWith('Q')) {
+            accept('warning', 'Entity name should not start with Q.', { node: entity, property: 'name' });
         }
     }
 
